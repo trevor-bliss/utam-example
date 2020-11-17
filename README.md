@@ -6,6 +6,8 @@ Example of utam integration
 - `yarn build` compiles Page Objects
 - `yarn test` runs test
 
+Example of the UI test that consumes UTAM Page Object is [here](https://github.com/lizaiv77/utam-example/blob/master/packages/tmp-pageobjects/src/__tests__/navigation.spec.ts)
+
 ## Utam dependencies
 
 Utam dependencies to use utam are:

@@ -14,9 +14,9 @@ Utam dependencies to use utam are:
 ```json
 {
     "devDependencies": {
-        "utam": "0.0.1-alpha10", // only if you need compiler!
-        "@utam/tmp-pageobjects": "0.0.1-alpha10", // only if you use externally compiled Page Objects
-        "wdio-utam-service": "0.0.1-alpha10"
+        "utam": "0.0.1-alpha11", // only if you need compiler!
+        "@utam/tmp-pageobjects": "0.0.1-alpha11", // only if you use externally compiled Page Objects
+        "wdio-utam-service": "0.0.1-alpha11"
     }
 }
 ```
@@ -80,9 +80,9 @@ describe('my test', () => {
 
 ## webdriverio integration without UtamWdioService
 
-If you intend to use utam without starting utam service from wdio config (supported starting version `0.0.1-alpha10`) and with Page Objects from the package use method `createUtamLoader`.
+If you intend to use utam without starting utam service from wdio config (supported starting version `0.0.1-alpha11`) and with Page Objects from the package use method `createUtamLoader`.
 
-Precompiled Page Objects are available in 
+Precompiled Page Objects are available in package `@utam/tmp-pageobjects`.
 
 ```js
 import Login from '@utam/tmp-pageobjects';
@@ -96,7 +96,8 @@ describe('login test example', () => {
         const utam = createUtamLoader(driver);
         const loginPage = await utam.load(Login);
         // login
-        await loginPage.login('test@kk.org', 'password123456');
+        await browser.url('/');
+        await loginPage.login('user', 'password');
     });
 
 });

@@ -1,7 +1,7 @@
 {
     "name": "utam-tests",
     "license": "MIT",
-    "version": "0.0.1-alpha10",
+    "version": "0.0.1",
     "private": true,
     "types": "build/index.d.ts",
     "main": "build/index.js",
@@ -19,8 +19,8 @@
         "chromedriver": "^85.0.1",
         "ts-node": "^9.0.0",
         "wdio-chromedriver-service": "^6.0.0",
-        "utam": "0.0.1-alpha10",
-        "wdio-utam-service": "0.0.1-alpha10",
-        "@utam/tmp-pageobjects": "0.0.1-alpha10"
+        "utam": "0.0.1-alpha11",
+        "wdio-utam-service": "0.0.1-alpha11",
+        "@utam/tmp-pageobjects": "0.0.1-alpha11"
     }
 }

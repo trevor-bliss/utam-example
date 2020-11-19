@@ -93,16 +93,14 @@ describe('login test example', () => {
     let utamLoader;
 
     beforeAll('utam loader setup', () => {
-        // driver Objects is a BrowserObject created inside wdio by the runner
-        // we pass it to utam loader to instantiate Page Objects
-        driver.setTimeout({implicit: 50000}); //if created externally - set polling timeout
+        // driver is a wdio BrowserObject created by its runner or by consumer
         utamLoader = createUtamLoader(driver);
     });
     
     it('login', async () => {
         await driver.url('/');
         const loginPage = await utamLoader.load(Login);
-        await loginPage.login('test@kk.org', 'password123456');
+        await loginPage.login('user', 'password');
     });
 
 });

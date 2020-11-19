@@ -8,10 +8,9 @@
         "clean": "lerna exec -- rimraf build/ tsconfig.tsbuildinfo && rimraf node_modules",
         "build:ts": "tsc -b",
         "build": "yarn build:ts && lerna run build",
-        "test": "cd packages/tmp-pageobjects && yarn test"
+        "test": "cd packages/utam-tests && yarn test"
     },
     "workspaces": [
-        "packages/@utam/*",
         "packages/*"
     ],
     "devDependencies": {

@@ -10,14 +10,11 @@ describe('login test example', () => {
         // we pass it to utam loader to instantiate Page Objects
         driver.setTimeout({implicit: 50000}); //if created externally - set polling timeout
         utamLoader = createUtamLoader(driver);
-        expect(utamLoader).toBeDefined();
     });
     
     it('login', async () => {
         await driver.url('/');
         const loginPage = await utamLoader.load(Login);
-        expect(loginPage).toBeDefined();
-        // login
         await loginPage.login('test@kk.org', 'password123456');
     });
 

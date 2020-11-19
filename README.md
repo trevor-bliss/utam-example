@@ -14,8 +14,8 @@ Utam dependencies to use utam are:
 ```json
 {
     "devDependencies": {
-        "utam": "0.0.1-alpha11", // only if you need compiler!
-        "@utam/tmp-pageobjects": "0.0.1-alpha11", // only if you use externally compiled Page Objects
+        "utam": "0.0.1-alpha11",
+        "@utam/tmp-pageobjects": "0.0.1-alpha11", 
         "wdio-utam-service": "0.0.1-alpha11"
     }
 }
@@ -89,15 +89,20 @@ import Login from '@utam/tmp-pageobjects';
 import { createUtamLoader } from 'wdio-utam-service';
 
 describe('login test example', () => {
-    
-    it('utam loader setup example', async () => {
+
+    let utamLoader;
+
+    beforeAll('utam loader setup', () => {
         // driver Objects is a BrowserObject created inside wdio by the runner
         // we pass it to utam loader to instantiate Page Objects
-        const utam = createUtamLoader(driver);
-        const loginPage = await utam.load(Login);
-        // login
-        await browser.url('/');
-        await loginPage.login('user', 'password');
+        driver.setTimeout({implicit: 50000}); //if created externally - set polling timeout
+        utamLoader = createUtamLoader(driver);
+    });
+    
+    it('login', async () => {
+        await driver.url('/');
+        const loginPage = await utamLoader.load(Login);
+        await loginPage.login('test@kk.org', 'password123456');
     });
 
 });

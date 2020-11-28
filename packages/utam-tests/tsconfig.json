@@ -5,9 +5,5 @@
         "outDir": "build",
         "types": ["node", "@types/jest", "@utam/loader", "wdio-utam-service", "webdriverio"],
         "noImplicitAny": false
-    },
-    "typeRoots": [
-        "./typings",
-        "./node_modules/@types/"
-    ]
+    }
 }

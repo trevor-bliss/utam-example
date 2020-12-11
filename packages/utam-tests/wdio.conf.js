@@ -2,9 +2,11 @@
 const path = require('path');
 const { UtamWdioService } = require('wdio-utam-service');
 
+const CHROMEDRIVER_VERSION = '87.0.4280.20';
+
 exports.config = {
     runner: 'local',
-    specs: ['./src/__tests__/*.spec.ts'],
+    specs: ['./src/__tests__/*.spec.js'],
     maxInstances: 1,
     capabilities: [
         {
@@ -18,7 +20,41 @@ exports.config = {
     connectionRetryTimeout: 120000,
     connectionRetryCount: 0,
     automationProtocol: 'webdriver',
-    services: ['chromedriver', [UtamWdioService, {}]],
+    services: [
+        // 'chromedriver',
+        [
+            'selenium-standalone',
+            {
+                // Temporarily force the download of a specific Chromedriver version to prevent the following error:
+                // "session not created: This version of ChromeDriver only supports Chrome version 83"
+                // Possibly related to https://github.com/webdriverio/webdriverio/issues/5747
+                logPath: './wdio-results/selenium-logs',
+                installArgs: {
+                    ignoreExtraDrivers: true,
+                    version: '3.141.5',
+                    baseURL: 'https://selenium-release.storage.googleapis.com',
+                    drivers: {
+                        chrome: {
+                            version: CHROMEDRIVER_VERSION,
+                            arch: process.arch,
+                            baseURL: 'https://chromedriver.storage.googleapis.com',
+                        },
+                    },
+                },
+                args: {
+                    version: '3.141.5',
+                    ignoreExtraDrivers: true,
+                    drivers: {
+                        chrome: {
+                            version: CHROMEDRIVER_VERSION,
+                            arch: process.arch,
+                        },
+                    },
+                },
+            },
+        ],
+        [UtamWdioService, {}]
+    ],
     framework: 'jasmine',
     reporters: ['spec'],
     jasmineNodeOpts: {
